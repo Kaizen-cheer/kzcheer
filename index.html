@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen Shop | Premium Discord Architect & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Kanit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #08040d;
+            --surface-bg: rgba(23, 14, 38, 0.65);
+            --border-glow: rgba(168, 85, 247, 0.35);
+            --accent-primary: #a855f7;
+            --accent-bright: #c084fc;
+            --text-high-contrast: #f5f3f7;
+            --text-muted: #94a3b8;
+        }
+
+        /* Reset & Base Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(107, 33, 168, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.12) 0%, transparent 50%);
+            color: var(--text-high-contrast);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* Container Main Grid */
+        .premium-container {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--surface-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Header Branding */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-bright);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .brand-header h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ffffff, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .brand-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Utility Sections */
+        .expert-section {
+            margin-bottom: 45px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .section-header .line {
+            height: 2px;
+            flex-grow: 1;
+            background: linear-gradient(to right, var(--accent-primary), transparent);
+        }
+
+        .section-title {
+            color: var(--text-high-contrast);
+            font-size: 1.35rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Pricing Table Styling (Premium Compact) */
+        .pricing-grid {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin-bottom: 25px;
+        }
+
+        .pricing-grid th {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 20px;
+            text-align: left;
+        }
+
+        .pricing-grid tr {
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.25s ease;
+        }
+
+        .pricing-grid tr:hover {
+            background: rgba(168, 85, 247, 0.08);
+            transform: scale(1.01);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-grid td {
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            border-top: 1px solid rgba(168, 85, 247, 0.05);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.05);
+        }
+
+        .pricing-grid td:first-child {
+            border-left: 1px solid rgba(168, 85, 247, 0.1);
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            color: #e2d1f9;
+        }
+
+        .pricing-grid td:last-child {
+            border-right: 1px solid rgba(168, 85, 247, 0.1);
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--accent-bright);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Agreement / Policy Box */
+        .policy-container {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .policy-item {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .policy-item::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+        }
+
+        .policy-item strong {
+            color: var(--text-high-contrast);
+            display: block;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .policy-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Professional CTA & Contact Block */
+        .expert-footer {
+            margin-top: 50px;
+            background: linear-gradient(135deg, rgba(59, 7, 100, 0.4) 0%, rgba(15, 23, 42, 0.3) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .expert-footer h2 {
+            font-size: 1.5rem;
+            color: var(--text-high-contrast);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .expert-footer span.subtitle {
+            color: var(--accent-bright);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-card {
+            background: rgba(11, 7, 19, 0.6);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-primary);
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .contact-card strong {
+            color: var(--accent-bright);
+            font-weight: 500;
+        }
+
+        .portfolio-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #7c3aed 100%);
+            color: #ffffff;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* Simple Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 768px) {
+            .premium-container { padding: 25px; }
+            .brand-header h1 { font-size: 2.4rem; }
+            .policy-container { grid-template-columns: 1fr; }
+            .pricing-grid td, .pricing-grid th { padding: 12px 14px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="premium-container" role="main">
+        
+        <header class="brand-header">
+            <span class="brand-badge">Premium Creation Service</span>
+            <h1>KAIZEN SHOP</h1>
+            <p>สถาปัตยกรรมและการพัฒนาระบบ Discord ครบวงจรระดับมืออาชีพ</p>
+        </header>
+
+        <section class="expert-section">
+            <div class="section-header">
+                <h2 class="section-title">Service Packages & Pricing</h2>
+                <div class="line"></div>
+            </div>
+            
+            <table class="pricing-grid">
+                <thead>
+                    <tr>
+                        <th>โครงสร้าง & ประเภทเซิร์ฟเวอร์</th>
+                        <th style="text-align: right;">ราคาเริ่มต้น (บาท)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>ดิสไม่มีระบบ (ออกแบบเฉพาะห้องเปล่า)</td><td>10+</td></tr>
+                    <tr><td>ดิสส่วนตัว (Personal Space)</td><td>89</td></tr>
+                    <tr><td>ดิสกิลล์ (Gaming Guilds)</td><td>109</td></tr>
+                    <tr><td>ดิสแคลน (Clan Base)</td><td>109</td></tr>
+                    <tr><td>ดิสแก๊ง (Gang & Friends)</td><td>109</td></tr>
+                    <tr><td>ดิสร้านค้า (E-Commerce Platform)</td><td>159</td></tr>
+                    <tr><td>ดิสสตรีมเมอร์ (Streamer Community)</td><td>199</td></tr>
+                    <tr><td>ดิสคอมมูนิตี้ (Large Public Community)</td><td>299</td></tr>
+                    <tr><td>ดิสประเทศ (City / Server Network)</td><td>399</td></tr>
+                    <tr><td>ดิสแนวโรลเพลย์ (Advanced RPG / ระบบซับซ้อน)</td><td>699</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="expert-section">
+            <div class="section-header">
+                <h2 class="section-title">Terms & Conditions</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="policy-container">
+                <div class="policy-item">
+                    <strong>การออกแบบและรับบรีฟงาน (Briefing)</strong>
+                    <p>ลูกค้าสามารถส่งบรีฟได้อย่างอิสระ หรือเลือกอ้างอิงจากโครงสร้างมาตรฐานที่ทางร้านเคยพัฒนามาแล้วได้อย่างยืดหยุ่น</p>
+                </div>
+                <div class="policy-item">
+                    <strong>การแก้ไขงานหลังส่งมอบ (Revision Policy)</strong>
+                    <p>หากงานเสร็จสิ้นแล้วและต้องการแก้ไขเพิ่มเติม นอกเหนือจากที่ตกลงไว้ในบรีฟแรก จะประเมินค่าใช้จ่ายเพิ่มเติมตามสเกลงาน</p>
+                </div>
+                <div class="policy-item">
+                    <strong>เงื่อนไขการยกเลิกและการคืนเงิน (Refund Policy)</strong>
+                    <p>หากเริ่มกระบวนการพัฒนาแล้ว จะไม่สามารถคืนเงินได้ทุกกรณี หากยังไม่เริ่มงาน ทางร้านจะดำเนินการคืนเงินให้ 50% ของยอดมัดจำ</p>
+                </div>
+                <div class="policy-item">
+                    <strong>การปรับแต่งโครงสร้างเพิ่มเติม (Customization)</strong>
+                    <p>ราคาเริ่มต้นอาจมีการเปลี่ยนแปลงตามความซับซ้อนของระบบ จำนวนห้อง และระดับของการตกแต่งกราฟิก</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="expert-footer">
+            <h2>เปิดรับคิวงานพร้อมรับคำปรึกษาฟรี</h2>
+            <span class="subtitle">" งบประมาณสามารถปรับเปลี่ยนได้ตามความเหมาะสมของโปรเจกต์ "</span>
+
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <strong>Facebook:</strong> 카이ゼン
+                </div>
+                <div class="contact-card">
+                    <strong>Discord:</strong> ac._.ac
+                </div>
+            </div>
+
+            <a class="portfolio-btn" href="https://drive.google.com/drive/folders/187AelMeeOfsdvWFpSHq8QxwIPsw7Kmzd?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                EXPLORE WORK PORTFOLIO
+            </a>
+        </footer>
+
+    </main>
+
+</body>
+</html>
